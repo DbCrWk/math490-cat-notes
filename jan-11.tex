@@ -38,7 +38,7 @@ Additionally, we assume the notion of a function (or map) and the standard notat
 \end{dfn}
 
 \begin{dfn}[Pre-Order]{dfn:pre-order}
-    A \textcolor{dfn-color}{pre-order} \( (P, \textcolor{dfn-color}{\leq}) \) is a set \( P \) with a binary relation \( \leq \) such that
+    A \textcolor{dfn-color}{pre-order} \( (P, \textcolor{dfn-color}{\leq}) \) is a set \( P \) with a \hyperref[dfn:relation]{binary relation} \( \leq \) such that
     \begin{itemize}
         \item \( \forall x \in P, \, x \leq x \) (reflexivity)
         \item \( \forall x, y, z \in P, \, [x \leq y \text{ and } x \leq z] \implies x \leq z \) (transitivity)
@@ -57,5 +57,49 @@ Additionally, we assume the notion of a function (or map) and the standard notat
     \]
     then we say that \( P \) is a \textcolor{dfn-color}{totally ordered set}.
 \end{dfn}
+
+\begin{eg}[Pre-Order with Power Sets]{eg:pre-order-power-sets}
+    Let \( X = \{ a, b, c \} \), i.e.\ a set with elements \( a, b, c \).
+    We say that its powerset \( \mathcal{P}_{X} \) consists of all subsets of \( X \) (which includes \( X \) itself and the empty set).
+    We will construct the \hyperref[dfn:pre-order]{pre-order} \( (\mathcal{P}_{X}, \subseteq) \) of set inclusion.
+    \\ \\
+    Associated to this pre-order, we can draw the following diagram
+    \\ \\
+    \begin{tikzpicture}[node distance=2cm]
+        \node (empty) {\( \emptyset \)};
+
+        \node (b) [above of=empty] {\( \{ b \} \)};
+        \node (a) [left of=b] {\( \{ a \} \)};
+        \node (c) [right of=b] {\( \{ c \} \)};
+
+        \node (ac) [above of=b] {\( \{ a, c \} \)};
+        \node (ab) [left of=ac] {\( \{ a, b \} \)};
+        \node (bc) [right of=ac] {\( \{ b, c \} \)};
+
+        \node (abc) [above of=ac] {\( \{ a, b, c \} \)};
+
+        \path[->,scale=3]
+            (empty) edge node [above] {} (a)
+            (empty) edge node [above] {} (b)
+            (empty) edge node [above] {} (c)
+
+            (a) edge node [above] {} (ab)
+            (a) edge node [above] {} (ac)
+            (b) edge node [above] {} (ab)
+            (b) edge node [above] {} (bc)
+            (c) edge node [above] {} (ac)
+            (c) edge node [above] {} (bc)
+
+            (ab) edge node [above] {} (abc)
+            (ac) edge node [above] {} (abc)
+            (bc) edge node [above] {} (abc)
+        ;
+    \end{tikzpicture}
+    \\ \\
+    where \( \longrightarrow \) denotes set inclusion.
+    Importantly, we are only denoting some arrows.
+    However, since the pre-order has the transitive property, we simply have to denote a ``covering'' set of \( \longrightarrow \), which we have done.
+    In other words: all subset relationships are represented by \( \longrightarrow \) or some sequence of \( \longrightarrow \)s.
+\end{eg}
 
 \end{document}
