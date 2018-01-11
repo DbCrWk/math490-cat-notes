@@ -21,4 +21,41 @@
     \end{itemize}
 \end{info}
 
+\section{Basic Definitions}\label{sec:definitions}
+
+We will take the definition of a set for granted and we will assume the use of naive set theory.
+Additionally, we assume the notion of a function (or map) and the standard notation for an application of a function \( f(\ldots) \).
+
+\begin{dfn}[Relation]{dfn:relation}
+    On some set \( X \), a \textcolor{dfn-color}{binary relation} is a function \( \textcolor{dfn-color}{\sim} \) such that
+    \[
+        \sim \, : X \times X \to \mathbb{B}
+    \]
+    where \( \mathbb{B} = \{ \top, \bot \} \).
+    Where \( x_1, x_2 \in X \), we write \( x_1 \sim x_2 \) to mean \( \sim(x_1, x_2) = \top \).
+    \\ \\
+    In other words, a relation is a ``binary'' or ``2-ary'' function (i.e.\ it takes two inputs) and returns either a true or false value (also notated as a \( 1 \) or \( 0 \)).
+\end{dfn}
+
+\begin{dfn}[Pre-Order]{dfn:pre-order}
+    A \textcolor{dfn-color}{pre-order} \( (P, \textcolor{dfn-color}{\leq}) \) is a set \( P \) with a binary relation \( \leq \) such that
+    \begin{itemize}
+        \item \( \forall x \in P, \, x \leq x \) (reflexivity)
+        \item \( \forall x, y, z \in P, \, [x \leq y \text{ and } x \leq z] \implies x \leq z \) (transitivity)
+    \end{itemize}
+    We also say that \( x \) \textcolor{dfn-color}{precedes} \( y \) when \( x \leq y \).
+    \\ \\
+    If \( \leq \) satisfies the condition that
+    \[
+        \forall x, y \in P, \, [x \leq y \text{ and } y \leq x] \implies x = y
+    \]
+    then we say that \( P \) is a \textcolor{dfn-color}{partially ordered set}.
+    \\ \\
+    If \( \leq \) satisfies the condition that
+    \[
+        \forall x, y \in P, \, x \leq y \text{ or } y \leq x
+    \]
+    then we say that \( P \) is a \textcolor{dfn-color}{totally ordered set}.
+\end{dfn}
+
 \end{document}
