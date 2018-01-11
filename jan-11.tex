@@ -81,7 +81,7 @@ Additionally, we assume the notion of a function (or map) and the standard notat
 
 \section{Working with Pre-Orders}\label{sec:working-with-pre-orders}
 
-\begin{eg}[Pre-Order with Power Sets]{eg:pre-order-power-sets}
+\begin{eg}[Pre-Order with Power Sets]{eg:powerset}
     Let \( X = \{ a, b, c \} \), i.e.\ a set with elements \( a, b, c \).
     We say that its powerset \( \mathcal{P}_{X} \) consists of all subsets of \( X \) (which includes \( X \) itself and the empty set).
     We will construct the \hyperref[dfn:pre-order]{pre-order} \( (\mathcal{P}_{X}, \subseteq) \) of set inclusion.
@@ -154,5 +154,53 @@ Additionally, we assume the notion of a function (or map) and the standard notat
     \]
     for \( x \in X \).
 \end{eg}
+
+\begin{prp}[Set Inclusion Map]{prp:set-inclusion-map}
+    For some set \( X \) and its \hyperref[eg:powerset]{powerset} \( \mathcal{P}_{X} \), \( \exists f \) such that
+    \begin{align*}
+        f : \mathcal{P}_{X} &\xrightarrow{\cong} \mathcal{B} \\
+        A &\mapsto
+        \left [
+            x \mapsto
+            \begin{cases}
+                \top & x \in A \\
+                \bot & x \notin A \\
+            \end{cases}
+        \right]
+    \end{align*}
+    where \( \mathcal{B} \) is the set of all maps \( f \) such that \( f : X \to \mathbb{B} \).
+\end{prp}
+
+\begin{prf}[Proof of Proposition~\ref{prp:set-inclusion-map}]{prf:set-inclusion-map}
+    We proceed with a constructive proof by constructing \( g \) such that
+    \begin{align*}
+        g : \mathcal{B} &\to \mathcal{P}_{X} \\
+        \phi &\mapsto \phi^{-1}(\top)
+    \end{align*}
+    We can now check the definition of a \hyperref[dfn:bijection]{bijection}.
+    We check the forward direction and note that
+    \begin{align*}
+        g(f(A)) &= g
+        \left(
+            x \mapsto
+            \begin{cases}
+                \top & x \in A \\
+                \bot & x \notin A \\
+            \end{cases}
+        \right) \\
+        &= \{ x : x \in A \} \\
+        &= A
+    \end{align*}
+    Checking the backwards direction yields
+    \begin{align*}
+        f(g(\phi)) &= f\left( \phi^{-1}(\top) \right) \\
+        &= x \mapsto
+            \begin{cases}
+                \top & x \in \phi^{-1}(\top) \\
+                \bot & x \notin \phi^{-1}(\top) \\
+            \end{cases} \\
+        &= \phi
+    \end{align*}
+\end{prf}
 
 \end{document}
