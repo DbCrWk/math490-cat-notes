@@ -58,6 +58,8 @@ Additionally, we assume the notion of a function (or map) and the standard notat
     then we say that \( P \) is a \textcolor{dfn-color}{totally ordered set}.
 \end{dfn}
 
+\section{Working with Pre-Orders}\label{sec:working-with-pre-orders}
+
 \begin{eg}[Pre-Order with Power Sets]{eg:pre-order-power-sets}
     Let \( X = \{ a, b, c \} \), i.e.\ a set with elements \( a, b, c \).
     We say that its powerset \( \mathcal{P}_{X} \) consists of all subsets of \( X \) (which includes \( X \) itself and the empty set).
@@ -100,6 +102,36 @@ Additionally, we assume the notion of a function (or map) and the standard notat
     Importantly, we are only denoting some arrows.
     However, since the pre-order has the transitive property, we simply have to denote a ``covering'' set of \( \longrightarrow \), which we have done.
     In other words: all subset relationships are represented by \( \longrightarrow \) or some sequence of \( \longrightarrow \)s.
+\end{eg}
+
+\begin{dfn}[Greatest, Least Elements; Top, Bottom]{dfn:el-great}
+    Given some \hyperref[dfn:pre-order]{pre-order} \( (P, \leq) \), we say that
+    \begin{alignat*}{3}
+        x \in P \text{ is a }
+        &\text{\textcolor{dfn-color}{greatest}} \text{ element or }
+        &\text{\textcolor{dfn-color}{top}} \hspace{1cm} \text{ if }
+        &y \leq x \, \forall y \in P \\
+        &\text{\textcolor{dfn-color}{least}} &\text{\textcolor{dfn-color}{bottom}} \hspace{1cm}
+        &x \leq y
+    \end{alignat*}
+\end{dfn}
+
+\begin{prp}[Binary Encoding Map]{prp:binary-encoding-map}
+    Given some set \( X \), all \( A : A \subseteq X \) correspond to some map \( \epsilon_{A} : X \to \mathbb{B} \).
+\end{prp}
+
+\begin{eg}[Binary Encoding Map]{eg:binary-encoding-map}
+    Let \( X = \{ a, b, c \} \) and \( A = \{ a, c \} \).
+    Then the corresponding encoding map \( \epsilon_{A} \) can be defined as
+    \[
+        \epsilon_{A}(x) \triangleq
+        \begin{cases}
+            \top = 1 & x = a \\
+            \bot = 0 & x = b \\
+            \top = 1 & x = c
+        \end{cases}
+    \]
+    for \( x \in X \).
 \end{eg}
 
 \end{document}
