@@ -58,6 +58,20 @@ Additionally, we assume the notion of a function (or map) and the standard notat
     then we say that \( P \) is a \textcolor{dfn-color}{totally ordered set}.
 \end{dfn}
 
+\begin{dfn}[Bijection, Bijective]{dfn:bijection}
+    A function or map \( f : X \to Y \) is \textcolor{dfn-color}{bijective} or \textcolor{dfn-color}{a bijection} if \( \exists g : Y \to X \) such that
+    \begin{align*}
+        f(g(y)) &= y \\
+        g(f(x)) &= x
+    \end{align*}
+    for all \( y \in Y \) and \( x \in X \).
+    \\ \\
+    For a bijection \( f \), we may write
+    \[
+        f : X \xrightarrow{\textcolor{dfn-color}{\cong}} Y
+    \]
+\end{dfn}
+
 \section{Working with Pre-Orders}\label{sec:working-with-pre-orders}
 
 \begin{eg}[Pre-Order with Power Sets]{eg:pre-order-power-sets}
