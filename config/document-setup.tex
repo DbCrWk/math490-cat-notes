@@ -10,6 +10,7 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{xcolor}
 \usepackage[colorlinks,allcolors=newblue]{hyperref}
 \usepackage{listings}
 \lstset{
@@ -36,3 +37,18 @@
 
 \input{config/lecture-header}
 \input{config/math-boxes}
+
+\definecolor{dfn-color}{rgb}{0,0.48,0.65}
+
+% https://tex.stackexchange.com/questions/227913/meet-and-join-symbols-for-mathematical-lattice-utf-∨-and-∧
+\DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+\DeclareFontShape{U}{matha}{m}{n}{
+      <5> <6> <7> <8> <9> <10> gen * matha
+      <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+      }{}
+\DeclareSymbolFont{matha}{U}{matha}{m}{n}
+\DeclareMathSymbol{\meet}{2}{matha}{"5E}
+\DeclareMathSymbol{\join}{2}{matha}{"5F}
+
+\newcommand*{\QED}{\hfill\ensuremath{\square}}
+\DeclareMathOperator{\lcm}{lcm}

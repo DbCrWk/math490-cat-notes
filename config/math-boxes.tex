@@ -97,7 +97,7 @@ frametitle={%
 frametitle={%
 \tikz[baseline=(current bounding box.east),outer sep=0pt]
 \node[anchor=east,rectangle,fill=red!20]
-{\strut Proof~\thetheo:~#1};}}%
+{\strut Proof~\theprf:~#1};}}%
 }%
 \mdfsetup{innertopmargin=5pt,innerbottommargin=10pt,linecolor=red!20,%
 linewidth=2pt,topline=true,%
@@ -178,6 +178,36 @@ frametitleaboveskip=\dimexpr-\ht\strutbox\relax
   {\strut Information~\theinfo:~#1};}}%
   }%
   \mdfsetup{innertopmargin=5pt,innerbottommargin=10pt,linecolor=gray!20,%
+  linewidth=2pt,topline=true,%
+  frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+  }
+  \begin{mdframed}[]\relax%
+  \label{#2}
+}
+{
+  \end{mdframed}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Example
+\newcounter{eg}[section]\setcounter{eg}{0}
+\renewcommand{\theeg}{\arabic{section}.\arabic{eg}}
+\newenvironment{eg}[2][]{%
+  \refstepcounter{eg}%
+  \ifstrempty{#1}%
+  {\mdfsetup{%
+  frametitle={%
+  \tikz[baseline=(current bounding box.east),outer sep=0pt]
+  \node[anchor=east,rectangle,fill=black!20]
+  {\strut Example~\theeg};}}
+  }%
+  {\mdfsetup{%
+  frametitle={%
+  \tikz[baseline=(current bounding box.east),outer sep=0pt]
+  \node[anchor=east,rectangle,fill=black!20]
+  {\strut Example~\theeg:~#1};}}%
+  }%
+  \mdfsetup{innertopmargin=5pt,innerbottommargin=10pt,linecolor=black!20,%
   linewidth=2pt,topline=true,%
   frametitleaboveskip=\dimexpr-\ht\strutbox\relax
   }
