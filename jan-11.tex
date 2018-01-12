@@ -208,7 +208,91 @@ Moreover, we may use the symbols of ``logical or'' \( \lor \) and ``logical and'
 \section{Special Subsets and their Pre-Order}\label{sec:subsets}
 
 \begin{dfn}[Union, Intersection]{dfn:union-intersection}
-
+    For two sets \( A \) and \( B \), we say their
+    \begin{align*}
+        \text{\textcolor{dfn-color}{union} } & A \mathbin{\textcolor{dfn-color}{\cup}} B \triangleq \{ x : x \in A \lor x \in B \} \\
+        \text{\textcolor{dfn-color}{intersection} } & A \mathbin{\textcolor{dfn-color}{\cap}} B \triangleq \{ x : x \in A \land x \in B \}
+    \end{align*}
 \end{dfn}
+
+\begin{prp}[Intersection, Union Basic Properties]{prp:union-intersection-props}
+    We observe several facts about the intersection and union.
+    First, for two sets \( A, B \)
+    \begin{enumerate}
+        \item \( A \hyperref[dfn:union-intersection]{\cap} B \subseteq A \)
+        \item \( A \hyperref[dfn:union-intersection]{\cap} B \subseteq B \)
+        \item \( A \subseteq A \hyperref[dfn:union-intersection]{\cup} B \)
+        \item \( B \subseteq A \hyperref[dfn:union-intersection]{\cup} B \)
+    \end{enumerate}
+    Additionally, we note that for sets \( A, B, Y, Z \) that
+    \begin{enumerate}
+        \item \( Y \subseteq A \hyperref[dfn:union-intersection]{\cap} B \iff [Y \subseteq A] \land [Y \subseteq B] \)
+        \item \( A \hyperref[dfn:union-intersection]{\cup} B \subseteq Z \iff [A \subseteq Z] \land [B \subseteq Z] \)
+    \end{enumerate}
+\end{prp}
+
+\section{The Meet and Join}\label{sec:meet-join}
+\begin{dfn}[Meet and Join]{dfn:meet-join}
+    Given a \hyperref[dfn:pre-order]{pre-order} \( (P, \leq) \), for two elements \( x, y \in P \), the \textcolor{dfn-color}{meet} of \( x \) and \( y \) is the element \( x \textcolor{dfn-color}{\meet} y \in P \) such that for all \( a \in P \)
+    \[
+        a \leq x \meet y \iff a \leq x \text{ and } a \leq y
+    \]
+    We can also use our arrow notation to write that
+    \[
+        a \longrightarrow x \meet y \iff a \longrightarrow x \text{ and } a \longrightarrow y
+    \]
+    The \textcolor{dfn-color}{join} is defined correspondingly as the element \( x \textcolor{dfn-color}{\join} y \in P \) such that for all \( a \in P \)
+    \begin{align*}
+        x \join y \leq a &\iff x \leq a \text{ and } y \leq a \\
+        x \join y \longrightarrow a &\iff x \longrightarrow a \text{ and } y \longrightarrow a \\
+    \end{align*}
+\end{dfn}
+\newpage
+\begin{rmk}[Symbol Confusion]{rmk:symbol-confusion}
+    Be sure to not confuse the ``logical and'' \( \land \) and \hyperref[dfn:meet-join]{meet} \( \meet \) symbols, which, while related, are not the same symbol.
+    Correspondingly, watch for the ``logical or'' \( \lor \) and \hyperref[dfn:meet-join]{join} \( \join \) symbols.
+\end{rmk}
+
+\begin{eg}[Factors]{eg:factors}
+    Let \( F_{30} \) be the set such that \( F_{30} = \{ n \in \mathbb{N} : n \mid 30 \} \) where \( \mid \) means ``divides.''
+    \( (F_{30}, \mid) \) is a \hyperref[dfn:pre-order]{pre-order}.
+    In this case, for two elements \( a, b \in F_{30} \), we see that
+    \begin{align*}
+        a \meet b &= \gcd{(a, b)} \\
+        a \join b &= \lcm{(a, b)}
+    \end{align*}
+    Moreover, we can visualize this by another lattice diagram
+    \\ \\
+    \begin{tikzpicture}[node distance=2cm]
+        \node (empty) {\( 1 \)};
+
+        \node (b) [above of=empty] {\( 3 \)};
+        \node (a) [left of=b] {\( 2 \)};
+        \node (c) [right of=b] {\( 5 \)};
+
+        \node (ac) [above of=b] {\( 10 \)};
+        \node (ab) [left of=ac] {\( 6 \)};
+        \node (bc) [right of=ac] {\( 15 \)};
+
+        \node (abc) [above of=ac] {\( 30 \)};
+
+        \path[->,scale=3]
+            (empty) edge node [above] {} (a)
+            (empty) edge node [above] {} (b)
+            (empty) edge node [above] {} (c)
+
+            (a) edge node [above] {} (ab)
+            (a) edge node [above] {} (ac)
+            (b) edge node [above] {} (ab)
+            (b) edge node [above] {} (bc)
+            (c) edge node [above] {} (ac)
+            (c) edge node [above] {} (bc)
+
+            (ab) edge node [above] {} (abc)
+            (ac) edge node [above] {} (abc)
+            (bc) edge node [above] {} (abc)
+        ;
+    \end{tikzpicture}
+\end{eg}
 
 \end{document}
